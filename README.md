@@ -35,14 +35,18 @@ Followings are minimum requirements for SDK:
 5. Select '+' icon from the top right corner → select 'module dependency' → select 'shufti_pro'.
 
 ## Permissions:
-Application uses the following permissions which you may have to add in privacy policy of the app. Both permissions are handled in SDK.
+Application uses the following permissions which you may have to add in privacy policy of the app. All permissions are handled in SDK.
 1. Camera
 2. Internet
+3. Recording Audio
+4. External Storage
 
 ## Verifications:
-Shufti Pro supports two modes of verification:<br />
+Shufti Pro supports four modes of verification:<br />
 **1. Identity Verification**<br />
-**2. Card Present Verification**
+**2. Document Verification**<br/>
+**3. Address Verification**</br>
+**4. Consent Verification**
 
 ## Integration: 
 See the sample project provided to learn the most common use. Make sure to build on real device.
