@@ -59,30 +59,34 @@ Make an instance
 Shuftipro instance = Shuftipro(clientId: "your-clientId",
                                secretKey: "your-secretKey");
 ```
-## Card Present Verification
-For **Card Present** verification
+## Face Verification
+For **Face** verification
 ```sh
-instance.creditCardVerification(country: "your country",
-                                      cardFirst6Digits: "your cardFirst6Digits",
-                                      cardLast4Digits: "your cardLast4Digits",
-                                      phoneNumber: "phoneNumber",
-			              activity:”your caller activity”,
-			              Shuftiverifylistener: new ShuftiVerifyListener(){
+instance.shuftiproVerification(reference: "unique reference of verification request",country: "your country", 
+				      language: "your language", email: "your email", callback_url: "your callback_url",
+                                      redirect_url: "your redirect_url", isToMakeFaceVerification: "set value to true",
+                                      isToPerformDocumentationVerification: "set value to false", 
+				      isSupportPassportType: "set value to false", isSupportIdCardType: "set value to false",    				    isSupportDrivingLicenseType: "set value to false",
+				      isSupportCreditCardType: "set value to false", nameOnDocument: "set null or empty", 					dob: "set null or empty", documentNumber: "set null or empty",
+				      expiryDate: "set null or empty", issueDate: "set null or empty",
+                                      isToPerformAddressVerification: "set value to false", fullAddress: "set null or empty", 					    name: "set null or empty", isUtilityBillSupportedType: "set value to false", 					      isIdCardSupportedType: "set value to false",
+				      isBankStatementSupportedType: "set value to false"
+				      isToPerformConsentVerification: "set value to false",
+				      textToBeVerify: "set null or empty", parentActivity: "your caller activity",
+				      ShuftiVerifyListener: new ShuftiVerifyListener(){
 				 
 					@Override
 					public void verificationStatus(HashMap<String, String> responseSet) {
-
-					   String status = responseSet.get("status_code");
-
-					   if(status.equalsIgnoreCase("SP1")){
+						String event = responseSet.get("event");
+				   		if(event.equalsIgnoreCase("verification.accepted")){
 						//Do anything you want.. I am showing a toast message
-					       Toast.makeText(this, "Status : Verified...", Toast.LENGTH_LONG).show();
-					   }else{
+				       		Toast.makeText(this, "Status : Verified...", Toast.LENGTH_LONG).show();
+						}
+						else{
 						//Do anything you want.. I am showing a toast message
-					       String message = responseSet.get("message");
-					       Toast.makeText(this, "Status : Not Verified..." + message, Toast.LENGTH_LONG).show();
-					   }});
-
+				      		 String message = responseSet.get("message");
+				      	 	Toast.makeText(this, "Status : Not Verified", Toast.LENGTH_LONG).show();
+				   }});
 ```
 
 
