@@ -281,6 +281,13 @@ instance.shuftiproVerification(reference: "unique reference",country: "your-coun
 ## Response Logging
 Response of verification can be logged via the code given below. You can see this in LogCat at runtime. Write this code in Response listener of SDK:
 ```sh
+
+//To view the errors of request
+String error = responseSet.get("error");
+
+Log.e("LoggingResp", error);
+
+//To get the status of request
  String event = responseSet.get("event");
  
 	if(event.equalsIgnoreCase("verification.accepted")){
