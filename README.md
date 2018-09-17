@@ -81,7 +81,7 @@ instance.shuftiproVerification(reference: "unique reference",country: "your-coun
 				      fullAddress: "", 
 				      name: "",
 				      isUtilityBillSupportedType: false, 					      					      isIdCardSupportedType: false,
-				      isBankStatementSupportedType: false
+				      isBankStatementSupportedType: false,
 				      isToPerformConsentVerification: false,
 				      textToBeVerify: "",
 				      parentActivity: "your-caller-activity",
@@ -133,7 +133,7 @@ instance.shuftiproVerification(reference: "unique reference",country: "your-coun
 				      fullAddress: "", 
 				      name: "",
 				      isUtilityBillSupportedType: false, 					      					      isIdCardSupportedType: false,
-				      isBankStatementSupportedType: false
+				      isBankStatementSupportedType: false,
 				      isToPerformConsentVerification: false,
 				      textToBeVerify: "",
 				      parentActivity: "your-caller-activity",
@@ -172,6 +172,112 @@ instance.shuftiproVerification(reference: "unique reference",country: "your-coun
 | expiryDate | Provide a valid date. Please note that the date should be after today. Example 2025-12-31 |
 | issueDate | Provide a valid date. Please note that the date should be after today. Example 2025-12-31 |
 
+## Address Verification
+For **Address** verification using ID documents (Methods: "**id_card**" or "**utility_bills**" or "**bank_statement**")
+```sh
+instance.shuftiproVerification(reference: "unique reference",country: "your-country", 
+				      language: "your-language", email: "your-email", callback_url: "your-callback_url",
+                                      redirect_url: "your-redirect_url",
+				      isToMakeFaceVerification: false,
+                                      isToPerformDocumentationVerification: false, 
+				      isSupportPassportType: false,
+				      isSupportIdCardType: false,    				    	     					   	      isSupportDrivingLicenseType: false,
+				      isSupportCreditCardType: false,
+				      nameOnDocument: "", 
+				      dob: "",
+				      documentNumber: "",
+				      expiryDate: "",
+				      issueDate: "",
+                                      isToPerformAddressVerification: true, 
+				      fullAddress: "", 
+				      name: "",
+				      isUtilityBillSupportedType: true, 					      					      isIdCardSupportedType: true,
+				      isBankStatementSupportedType: true,
+				      isToPerformConsentVerification: false,
+				      textToBeVerify: "",
+				      parentActivity: "your-caller-activity",
+				      ShuftiVerifyListener: new ShuftiVerifyListener(){
+				 
+					@Override
+					public void verificationStatus(HashMap<String, String> responseSet) {
+					
+						String event = responseSet.get("event");
+				   		if(event.equalsIgnoreCase("verification.accepted")){
+						//Do anything you want.. I am showing a toast message
+				       		Toast.makeText(this, "Status : Verified...", Toast.LENGTH_LONG).show();
+						}
+						else{
+						
+						//Do anything you want.. I am showing a toast message
+				      		 String message = responseSet.get("message");
+				      	 	Toast.makeText(this, "Status : Not Verified", Toast.LENGTH_LONG).show();
+				   }});
+```
+#### Request Parameters 
+
+| Parameter | Description |
+| ------ | ------ |
+| isToPerformAddressVerification | Set value to true. |
+| email | Your email address. Example: johndoe@example.com. |
+| country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
+| callback_url | Your callback url. Example: http://www.example.com. |
+| isUtilityBillSupportedType | If you set it true user will be able to verify data using utility bills. |
+| isIdCardSupportedType | If you set it true user will be able to verify data using Id card. |
+| isBankStatementSupportedType | If you set it true user will be able to verify data using bank statements. |
+| fullAddress | Leave empty to perform data extraction from provided proofs. |
+| name | Leave empty to perform data extraction from provided proofs. |
+
+## Consent Verification
+For **Consent** verification
+```sh
+instance.shuftiproVerification(reference: "unique reference",country: "your-country", 
+				      language: "your-language", email: "your-email", callback_url: "your-callback_url",
+                                      redirect_url: "your-redirect_url",
+				      isToMakeFaceVerification: false,
+                                      isToPerformDocumentationVerification: false, 
+				      isSupportPassportType: false,
+				      isSupportIdCardType: false,    				    	     					   	      isSupportDrivingLicenseType: false,
+				      isSupportCreditCardType: false,
+				      nameOnDocument: "", 
+				      dob: "",
+				      documentNumber: "",
+				      expiryDate: "",
+				      issueDate: "",
+                                      isToPerformAddressVerification: false, 
+				      fullAddress: "", 
+				      name: "",
+				      isUtilityBillSupportedType: false, 					      					      isIdCardSupportedType: false,
+				      isBankStatementSupportedType: false,
+				      isToPerformConsentVerification: true,
+				      textToBeVerify: "This text is to be verified",
+				      parentActivity: "your-caller-activity",
+				      ShuftiVerifyListener: new ShuftiVerifyListener(){
+				 
+					@Override
+					public void verificationStatus(HashMap<String, String> responseSet) {
+					
+						String event = responseSet.get("event");
+				   		if(event.equalsIgnoreCase("verification.accepted")){
+						//Do anything you want.. I am showing a toast message
+				       		Toast.makeText(this, "Status : Verified...", Toast.LENGTH_LONG).show();
+						}
+						else{
+						
+						//Do anything you want.. I am showing a toast message
+				      		 String message = responseSet.get("message");
+				      	 	Toast.makeText(this, "Status : Not Verified", Toast.LENGTH_LONG).show();
+				   }});
+```
+#### Request Parameters 
+
+| Parameter | Description |
+| ------ | ------ |
+| isToPerformConsentVerification | Set value to true. |
+| email | Your email address. Example: johndoe@example.com. |
+| country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
+| callback_url | Your callback url. Example: http://www.example.com. |
+| textToBeVerify | Provide text in the string format which will be verified from a given proof. |
+
 ## Response Logging
 Response of verification can be logged via the code given below. You can see this in LogCat at runtime. Write this code in Response listener of SDK:
 ```sh
@@ -179,9 +285,11 @@ Response of verification can be logged via the code given below. You can see thi
  
 	if(event.equalsIgnoreCase("verification.accepted")){
 	
+	//Verification accepted do whatever you want to do
 		Log.i("LoggingResp", event);
 	}else{
 	
+	//Verification declined do whatever you want to do
 	Log.i("LoggingResp", event);
 	}
 
