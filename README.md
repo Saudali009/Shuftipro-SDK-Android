@@ -62,27 +62,39 @@ Shuftipro instance = Shuftipro(clientId: "your-clientId",
 ## Face Verification
 For **Face** verification
 ```sh
-instance.shuftiproVerification(reference: "unique reference of verification request",country: "your country", 
-				      language: "your language", email: "your email", callback_url: "your callback_url",
-                                      redirect_url: "your redirect_url", isToMakeFaceVerification: "set value to true",
-                                      isToPerformDocumentationVerification: "set value to false", 
-				      isSupportPassportType: "set value to false", isSupportIdCardType: "set value to false",    				    isSupportDrivingLicenseType: "set value to false",
-				      isSupportCreditCardType: "set value to false", nameOnDocument: "set null or empty", 					dob: "set null or empty", documentNumber: "set null or empty",
-				      expiryDate: "set null or empty", issueDate: "set null or empty",
-                                      isToPerformAddressVerification: "set value to false", fullAddress: "set null or empty", 					    name: "set null or empty", isUtilityBillSupportedType: "set value to false", 					      isIdCardSupportedType: "set value to false",
-				      isBankStatementSupportedType: "set value to false"
-				      isToPerformConsentVerification: "set value to false",
-				      textToBeVerify: "set null or empty", parentActivity: "your caller activity",
+instance.shuftiproVerification(reference: "unique reference",country: "your-country", 
+				      language: "your-language", email: "your-email", callback_url: "your-callback_url",
+                                      redirect_url: "your-redirect_url",
+				      isToMakeFaceVerification: "set value to true",
+                                      isToPerformDocumentationVerification: "set value false", 
+				      isSupportPassportType: "set value false",
+				      isSupportIdCardType: "set value false",    				    	     					   isSupportDrivingLicenseType: "set value false",
+				      isSupportCreditCardType: "set value false",
+				      nameOnDocument: "set null or empty", 
+				      dob: "set null or empty",
+				      documentNumber: "set null or empty",
+				      expiryDate: "set null or empty",
+				      issueDate: "set null or empty",
+                                      isToPerformAddressVerification: "set value false", 
+				      fullAddress: "set null or empty", 
+				      name: "set null or empty",
+				      isUtilityBillSupportedType: "set value false", 					      					    isIdCardSupportedType: "set value false",
+				      isBankStatementSupportedType: "set value false"
+				      isToPerformConsentVerification: "set value false",
+				      textToBeVerify: "set null or empty",
+				      parentActivity: "your caller activity",
 				      ShuftiVerifyListener: new ShuftiVerifyListener(){
 				 
 					@Override
 					public void verificationStatus(HashMap<String, String> responseSet) {
+					
 						String event = responseSet.get("event");
 				   		if(event.equalsIgnoreCase("verification.accepted")){
 						//Do anything you want.. I am showing a toast message
 				       		Toast.makeText(this, "Status : Verified...", Toast.LENGTH_LONG).show();
 						}
 						else{
+						
 						//Do anything you want.. I am showing a toast message
 				      		 String message = responseSet.get("message");
 				      	 	Toast.makeText(this, "Status : Not Verified", Toast.LENGTH_LONG).show();
@@ -94,10 +106,10 @@ instance.shuftiproVerification(reference: "unique reference of verification requ
 
 | Parameter | Description |
 | ------ | ------ |
-| cardFirst6Digits | First 6 digits of the customer’s credit/debit card number. |
-| cardLast4Digits | Last 4 digits of the customer’s credit/debit card number.  |
+| isToMakeFaceVerification | Set value to true. |
+| email | Your email address. Example: johndoe@example.com. |
 | country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
-| phoneNumber | Customer’s phone number with country code. Example: +440000000000 |
+| callback_url | Your callback url. Example: http://www.example.com. |
 
 ## Identity Verification
 For **Identity** verification using ID documents (Methods: "**driving_license**" or "**passport**" or "**id_card**")
@@ -132,16 +144,15 @@ instance.documentVerification(method: "type of method for verification",
 ## Response Logging
 Response of verification can be logged via the code given below. You can see this in LogCat at runtime. Write this code in Response listener of SDK:
 ```sh
- String status = responseSet.get("status_code");
-
-        if(status.equalsIgnoreCase("SP1")){
+ String event = responseSet.get("event");
+ 
+	if(event.equalsIgnoreCase("verification.accepted")){
 	
-           Log.i("tagResponse","Verified");
-        }else{
+		Log.i("LoggingResp", event);
+	}else{
 	
-            String message = responseSet.get("message");
-            Log.i("tagResponse",message);
-        }
+	Log.i("LoggingResp", event);
+	}
 
 ```
 **Note:** Run project on a real device.
