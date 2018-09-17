@@ -303,26 +303,27 @@ Log.e("LoggingResp", error);
 ```
 **Note:** Run project on a real device.
 
-## Response Status Codes 
-| Status Code | Description |
-| ------ | ------ |
-| SP0 | Not Verified |
-| SP1 | Verified |
-| SP2 | Success! -- Contains the redirect URL in message parameter |
-| SP11 | Length Validation -- [parameter_name] maximum and minimum length limit is [parameter_name] characters. |
-| SP14 | Duplicate reference -- If a duplicate reference is provided. |
-| SP15 | Invalid client ID -- Client ID is invalid or not found. |
-| SP16 | Missing required parameter -- ["parameter_name"] is required but either missing or empty |
-| SP17 | Invalid format -- ["parameter_name"] is not in the correct format. |
-| SP18 | Invalid signature -- Invalid request signature. |
-| SP19 | Invalid country code -- Invalid country code or country is not supported. |
-| SP20 | Invalid Phone No -- Invalid phone number is provided. |
-| SP21 | Invalid Method Name -- Given verification method is not supported. |
-| SP23 | Invalid DOB -- Date of birth is not valid. |
-| SP24 | Blocked Client -- Your account is not active. |
-| SP25 | Request Timeout -- Send in callback when request timeout occurs. |
-| SP26 | User lands on the verification page. |
-| SP27 | Request is already processed. |
+## Status Response
+The Shufti Pro Verification API will send a JSON response if a status request is made.
+
+* <h3>reference</h3>
+	Your unique request reference, which you provided us at the time of request, so that you can identify the response in relation to the request made.
+
+* <h3>event</h3>
+	This is the request event which shows status of request. Event is changed in every response. Please consult [Events](status_codes.md#events) for more information.
+
+<aside class="notice">
+Note: <b>request.invalid</b> response with <b>HTTP status code 400</b> means the request is invalid.
+</aside>
+
+>Sample Response  
+
+```json
+{
+    "reference": "17374217",
+    "event": "request.invalid"
+}
+```
 
 ## Sample project setup
 In DetailFragment.java file add your **Client ID** on line 86 and **Secret Key** on line 87, thats it!
