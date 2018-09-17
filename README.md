@@ -60,26 +60,27 @@ Shuftipro instance = Shuftipro(clientId: "your-clientId",
 ## Sample Request
 For **Sample** verification request
 ```sh
-instance.shuftiproVerification(reference: "unique reference",country: "your-country", 
-				      language: "your-language", email: "your-email", callback_url: "your-callback_url",
+instance.shuftiproVerification(reference: "u123456789876",country: "PK", 
+				      language: "EN", email: "example@gmail.com",
+				      callback_url: "your-callback_url",
                                       redirect_url: "your-redirect_url",
 				      isToMakeFaceVerification: true,
-                                      isToPerformDocumentationVerification: false, 
-				      isSupportPassportType: false,
-				      isSupportIdCardType: false,    				    	     					   	      isSupportDrivingLicenseType: false,
-				      isSupportCreditCardType: false,
-				      nameOnDocument: "", 
-				      dob: "",
-				      documentNumber: "",
+                                      isToPerformDocumentationVerification: true, 
+				      isSupportPassportType: true,
+				      isSupportIdCardType: true,    				    	     					   	      isSupportDrivingLicenseType: true,
+				      isSupportCreditCardType: true,
+				      nameOnDocument: "John Doe", 
+				      dob: "12-09-1992",
+				      documentNumber: "EN1233312DD",
 				      expiryDate: "",
 				      issueDate: "",
-                                      isToPerformAddressVerification: false, 
+                                      isToPerformAddressVerification: true, 
 				      fullAddress: "", 
 				      name: "",
-				      isUtilityBillSupportedType: false, 					      					      isIdCardSupportedType: false,
-				      isBankStatementSupportedType: false,
-				      isToPerformConsentVerification: false,
-				      textToBeVerify: "",
+				      isUtilityBillSupportedType: true, 					      					      isIdCardSupportedType: true,
+				      isBankStatementSupportedType: true,
+				      isToPerformConsentVerification: true,
+				      textToBeVerify: "My custom text",
 				      parentActivity: "your-caller-activity",
 				      ShuftiVerifyListener: new ShuftiVerifyListener(){
 				 
@@ -104,14 +105,16 @@ instance.shuftiproVerification(reference: "unique reference",country: "your-coun
 
 | Parameter | Description |
 | ------ | ------ |
-| isToMakeFaceVerification | Set value to true. |
+| language | This is the unique reference ID of request, which we will send you back with each response, so you can verify the request. Only alphanumeric values are allowed. This reference can be used to get status of already performed verification requests. |
+| language | Send the 2 characters long language code of your preferred language to display the verification screens accordingly. |
 | email | Your email address. Example: johndoe@example.com. |
 | country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
 | callback_url | Your callback url. Example: http://www.example.com. |
-| isToPerformDocumentationVerification | Set value to true. |
+| redirect_url | Your redirect url. Example: http://www.example.com. |
 | email | Your email address. Example: johndoe@example.com. |
 | country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
-| callback_url | Your callback url. Example: http://www.example.com. |
+| isToMakeFaceVerification | Set value to true for face verification |
+| isToPerformDocumentationVerification | Set value to true for face documentation verification |
 | isSupportPassportType | If you set it true user will be able to verify data using passport. |
 | isSupportIdCardType | If you set it true user will be able to verify data using Id card. |
 | isSupportDrivingLicenseType | If you set it true user will be able to verify data using driving lisence. |
@@ -121,19 +124,13 @@ instance.shuftiproVerification(reference: "unique reference",country: "your-coun
 | documentNumber | Allowed Characters are numbers, alphabets, dots, dashes, spaces, underscores and commas. Examples 35201-0000000-0, ABC1234XYZ098 |
 | expiryDate | Provide a valid date. Please note that the date should be after today. Example 2025-12-31 |
 | issueDate | Provide a valid date. Please note that the date should be after today. Example 2025-12-31 |
-| isToPerformAddressVerification | Set value to true. |
-| email | Your email address. Example: johndoe@example.com. |
-| country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
-| callback_url | Your callback url. Example: http://www.example.com. |
+| isToPerformAddressVerification | Set value to true for address verification. |
 | isUtilityBillSupportedType | If you set it true user will be able to verify data using utility bills. |
 | isIdCardSupportedType | If you set it true user will be able to verify data using Id card. |
 | isBankStatementSupportedType | If you set it true user will be able to verify data using bank statements. |
 | fullAddress | Leave empty to perform data extraction from provided proofs. |
 | name | Leave empty to perform data extraction from provided proofs. |
-| isToPerformConsentVerification | Set value to true. |
-| email | Your email address. Example: johndoe@example.com. |
-| country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
-| callback_url | Your callback url. Example: http://www.example.com. |
+| isToPerformConsentVerification | Set value to true for consent verification. |
 | textToBeVerify | Provide text in the string format which will be verified from a given proof. |
 
 ## Response Logging
