@@ -10,8 +10,10 @@ Shufti Pro is an Identity Verification software as a service that enables enterp
 * [Permissions](#permissions)
 * [Integration](#integration)
 * [Verifications](#verifications)
-  * [Identity Verification](#identity-verification)
-  * [Card Present Verification](#card-present-verification)
+  * [Face Verification](#Face-Verification)
+  * [Documentation Verification](#Documentation-Verification)
+  * [Address Verification](#Address-Verification)
+  * [Consent Verification](#Consent-Verification)
 * [Response Logging](#response-logging)
 * [Response Status Codes](#response-status-codes)
 * [Sample Project Setup](#sample-project-setup)
@@ -43,7 +45,7 @@ Application uses the following permissions which you may have to add in privacy 
 
 ## Verifications:
 Shufti Pro supports four modes of verification:<br />
-**1. Identity Verification**<br />
+**1. Face Verification**<br />
 **2. Document Verification**<br/>
 **3. Address Verification**</br>
 **4. Consent Verification**
