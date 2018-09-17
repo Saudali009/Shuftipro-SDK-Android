@@ -113,8 +113,8 @@ instance.shuftiproVerification(reference: "u123456789876",country: "PK",
 | redirect_url | Your redirect url. Example: http://www.example.com. |
 | email | Your email address. Example: johndoe@example.com. |
 | country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
-| isToMakeFaceVerification | Set value to true for face verification |
-| isToPerformDocumentationVerification | Set value to true for face documentation verification |
+| isToMakeFaceVerification | Set value to true for face verification. |
+| isToPerformDocumentationVerification | Set value to true for face documentation verification. |
 | isSupportPassportType | If you set it true user will be able to verify data using passport. |
 | isSupportIdCardType | If you set it true user will be able to verify data using Id card. |
 | isSupportDrivingLicenseType | If you set it true user will be able to verify data using driving lisence. |
