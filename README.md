@@ -11,7 +11,7 @@ Shufti Pro is an Identity Verification software as a service that enables enterp
 * [Integration](#integration)
 * [Sample Request](#sample-request)
 * [Response Logging](#response-logging)
-* [Response Status Codes](#response-status-codes)
+* [Status Response](#status-response)
 * [Sample Project Setup](#sample-project-setup)
 * [Test IDs](#test-ids)
 * [Contact](#contact)
