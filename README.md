@@ -65,24 +65,24 @@ For **Face** verification
 instance.shuftiproVerification(reference: "unique reference",country: "your-country", 
 				      language: "your-language", email: "your-email", callback_url: "your-callback_url",
                                       redirect_url: "your-redirect_url",
-				      isToMakeFaceVerification: "set value to true",
-                                      isToPerformDocumentationVerification: "set value false", 
-				      isSupportPassportType: "set value false",
-				      isSupportIdCardType: "set value false",    				    	     					   isSupportDrivingLicenseType: "set value false",
-				      isSupportCreditCardType: "set value false",
-				      nameOnDocument: "set null or empty", 
-				      dob: "set null or empty",
-				      documentNumber: "set null or empty",
-				      expiryDate: "set null or empty",
-				      issueDate: "set null or empty",
-                                      isToPerformAddressVerification: "set value false", 
-				      fullAddress: "set null or empty", 
-				      name: "set null or empty",
-				      isUtilityBillSupportedType: "set value false", 					      					    isIdCardSupportedType: "set value false",
-				      isBankStatementSupportedType: "set value false"
-				      isToPerformConsentVerification: "set value false",
-				      textToBeVerify: "set null or empty",
-				      parentActivity: "your caller activity",
+				      isToMakeFaceVerification: true,
+                                      isToPerformDocumentationVerification: false, 
+				      isSupportPassportType: false,
+				      isSupportIdCardType: false,    				    	     					   	      isSupportDrivingLicenseType: false,
+				      isSupportCreditCardType: false,
+				      nameOnDocument: "", 
+				      dob: "",
+				      documentNumber: "",
+				      expiryDate: "",
+				      issueDate: "",
+                                      isToPerformAddressVerification: false, 
+				      fullAddress: "", 
+				      name: "",
+				      isUtilityBillSupportedType: false, 					      					      isIdCardSupportedType: false,
+				      isBankStatementSupportedType: false
+				      isToPerformConsentVerification: false,
+				      textToBeVerify: "",
+				      parentActivity: "your-caller-activity",
 				      ShuftiVerifyListener: new ShuftiVerifyListener(){
 				 
 					@Override
@@ -111,35 +111,64 @@ instance.shuftiproVerification(reference: "unique reference",country: "your-coun
 | country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
 | callback_url | Your callback url. Example: http://www.example.com. |
 
-## Identity Verification
-For **Identity** verification using ID documents (Methods: "**driving_license**" or "**passport**" or "**id_card**")
+## Documentation Verification
+For **Document** verification using ID documents (Methods: "**driving_license**" or "**passport**" or "**id_card**" or "**credit_or_debit_card**")
 ```sh
-instance.documentVerification(method: "type of method for verification",
-                            firstName: "your first name",
-                            lastName: "your last name",
-                            dob: "yyyy-mm-dd",
-                            country: "your country",
-                            phoneNumber: "your phone number",
-		            activity:”your caller activity”,
-		            Shuftiverifylistener: new ShuftiVerifyListener(){
-			 
-				@Override
-				public void verificationStatus(HashMap<String, String> responseSet) {
-
-				   String status = responseSet.get("status_code");
-
-				   if(status.equalsIgnoreCase("SP1")){
-
-					//Do anything you want.. I am showing a toast message
-				       Toast.makeText(this, "Status : Verified...", Toast.LENGTH_LONG).show();
-				   }else{
-
-					//Do anything you want.. I am showing a toast message
-				       String message = responseSet.get("message");
-				       Toast.makeText(this, "Status : Not Verified..." + message, Toast.LENGTH_LONG).show();
-				   }}) ;
-
+instance.shuftiproVerification(reference: "unique reference",country: "your-country", 
+				      language: "your-language", email: "your-email", callback_url: "your-callback_url",
+                                      redirect_url: "your-redirect_url",
+				      isToMakeFaceVerification: false,
+                                      isToPerformDocumentationVerification: true, 
+				      isSupportPassportType: true,
+				      isSupportIdCardType: true,    				    	     					   	      isSupportDrivingLicenseType: true,
+				      isSupportCreditCardType: true,
+				      nameOnDocument: "John Doe", 
+				      dob: "12-02-1990",
+				      documentNumber: "12338800",
+				      expiryDate: "12-09-2000",
+				      issueDate: "12-09-1990",
+                                      isToPerformAddressVerification: false, 
+				      fullAddress: "", 
+				      name: "",
+				      isUtilityBillSupportedType: false, 					      					      isIdCardSupportedType: false,
+				      isBankStatementSupportedType: false
+				      isToPerformConsentVerification: false,
+				      textToBeVerify: "",
+				      parentActivity: "your-caller-activity",
+				      ShuftiVerifyListener: new ShuftiVerifyListener(){
+				 
+					@Override
+					public void verificationStatus(HashMap<String, String> responseSet) {
+					
+						String event = responseSet.get("event");
+				   		if(event.equalsIgnoreCase("verification.accepted")){
+						//Do anything you want.. I am showing a toast message
+				       		Toast.makeText(this, "Status : Verified...", Toast.LENGTH_LONG).show();
+						}
+						else{
+						
+						//Do anything you want.. I am showing a toast message
+				      		 String message = responseSet.get("message");
+				      	 	Toast.makeText(this, "Status : Not Verified", Toast.LENGTH_LONG).show();
+				   }});
 ```
+#### Request Parameters 
+
+| Parameter | Description |
+| ------ | ------ |
+| isToPerformDocumentationVerification | Set value to true. |
+| email | Your email address. Example: johndoe@example.com. |
+| country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
+| callback_url | Your callback url. Example: http://www.example.com. |
+| isSupportPassportType | If you set it true user will be able to verify data using passport. |
+| isSupportIdCardType | If you set it true user will be able to verify data using Id card. |
+| isSupportDrivingLicenseType | If you set it true user will be able to verify data using driving lisence. |
+| isSupportCreditCardType | If you set it true user will be able to verify data using credit card. |
+| nameOnDocument | The nameOnDocument is required if you don't want to perform OCR of the name. Otherwise optional. |
+| dob | Provide a valid date. Please note that the date should be before today. Example 1990-12-31. |
+| documentNumber | Allowed Characters are numbers, alphabets, dots, dashes, spaces, underscores and commas. Examples 35201-0000000-0, ABC1234XYZ098 |
+| expiryDate | Provide a valid date. Please note that the date should be after today. Example 2025-12-31 |
+| issueDate | Provide a valid date. Please note that the date should be after today. Example 2025-12-31 |
 
 ## Response Logging
 Response of verification can be logged via the code given below. You can see this in LogCat at runtime. Write this code in Response listener of SDK:
