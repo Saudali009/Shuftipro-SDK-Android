@@ -105,7 +105,7 @@ instance.shuftiproVerification(reference: "u123456789876",country: "PK",
 
 | Parameter | Description |
 | ------ | ------ |
-| language | This is the unique reference ID of request, which we will send you back with each response, so you can verify the request. Only alphanumeric values are allowed. This reference can be used to get status of already performed verification requests. |
+| reference | This is the unique reference ID of request, which we will send you back with each response, so you can verify the request. Only alphanumeric values are allowed. This reference can be used to get status of already performed verification requests. |
 | language | Send the 2 characters long language code of your preferred language to display the verification screens accordingly. |
 | email | Your email address. Example: johndoe@example.com. |
 | country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
