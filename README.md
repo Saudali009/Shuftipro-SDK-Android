@@ -303,18 +303,6 @@ Log.e("LoggingResp", error);
 ```
 **Note:** Run project on a real device.
 
-#### Request Parameters 
-
-| Parameter | Description |
-| ------ | ------ |
-| method | Which type of verification would you like for your customers? <br> Possible   values: <br> <ul><li> passport </li><li> driving_license </li><li> id_card</li></ul> |
-| firstName | Customer’s First Name. The maximum length of the string is 32 characters and minimum required length is 2 characters. |
-| lastName | Customer’s Last Name. The maximum length of the string is 32 characters and minimum required length is 2 characters. |
-| dob | Customer’s date of birth (YYYY-MM-DD). Example: 1980-01-31 |
-| country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
-| phoneNumber | Customer’s phone number with country code. Example: +440000000000 |
-
-
 ## Response Status Codes 
 | Status Code | Description |
 | ------ | ------ |
