@@ -117,7 +117,7 @@ instance.shuftiproVerification(reference: "17374217",country: "PK",
 | isSupportIdCardType | If you set it true user will be able to verify data using Id card. |
 | isSupportDrivingLicenseType | If you set it true user will be able to verify data using driving lisence. |
 | isSupportCreditCardType | If you set it true user will be able to verify data using credit card. |
-| nameOnDocument | The nameOnDocument is required if you don't want to perform OCR of the name. Otherwise optional. |
+| nameOnDocument | The name is required if you don't want to perform OCR of the name. Otherwise optional. |
 | dob | Provide a valid date. Please note that the date should be before today. Example 1990-12-31. |
 | documentNumber | Allowed Characters are numbers, alphabets, dots, dashes, spaces, underscores and commas. Examples 35201-0000000-0, ABC1234XYZ098 |
 | expiryDate | Provide a valid date. Please note that the date should be after today. Example 2025-12-31 |
@@ -129,7 +129,7 @@ instance.shuftiproVerification(reference: "17374217",country: "PK",
 | fullAddress | Leave empty to perform data extraction from provided proofs. |
 | name | Leave empty to perform data extraction from provided proofs. |
 | isToPerformConsentVerification | Set value to true for consent verification. |
-| textToBeVerify | Provide text in the string format which will be verified from a given proof. |
+| textToBeVerified | Provide text in the string format which will be verified from a given proof. |
 
 ## Response Logging
 Response of verification can be logged via the code given below. You can see this in LogCat at runtime. Write this code in Response listener of SDK:
