@@ -175,7 +175,9 @@ Note: <b>request.invalid</b> response with <b>HTTP status code 400</b> means the
 ```json
 {
     "reference": "17374217",
-    "event": "request.invalid"
+    "event": "verification.accepted",
+    "error": ""
+    "call_back_url": ""
 }
 ```
 
