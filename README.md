@@ -177,7 +177,7 @@ Note: <b>request.invalid</b> response with <b>HTTP status code 400</b> means the
     "reference": "17374217",
     "event": "verification.accepted",
     "error": ""
-    "call_back_url": ""
+    "call_back_url: ""
 }
 ```
 
