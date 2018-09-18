@@ -30,7 +30,6 @@ Followings are minimum requirements for SDK:
 3. Right click on 'app module' → Select 'Module setting'.
 4. Select 'Dependencies' from the right pane.
 5. Select '+' icon from the top right corner → select 'module dependency' → select 'shufti_pro'.
-6. Add dependency 'com.squareup.okhttp3:okhttp:3.11.0' (or latest version)
 
 ## Permissions:
 Application uses the following permissions which you may have to add in privacy policy of the app. All permissions are handled in SDK.
