@@ -174,10 +174,14 @@ Note: <b>request.invalid</b> response with <b>HTTP status code 400</b> means the
 
 ```json
 {
-    "reference": "17374217",
-    "event": "verification.accepted",
-    "error": ""
-    "call_back_url: ""
+  "reference": "17374217",
+  "event": "request.invalid",
+  "error": {
+    "service": "document",
+    "key": "dob",
+    "message": "The dob does not match the format Y-m-d."
+  },
+  "verification_url": ""
 }
 ```
 
