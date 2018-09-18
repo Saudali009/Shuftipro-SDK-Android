@@ -59,7 +59,7 @@ Shuftipro instance = Shuftipro(clientId: "your-clientId",
 ## Sample Request
 For **Sample** verification request
 ```sh
-instance.shuftiproVerification(reference: "u123456789876",country: "PK", 
+instance.shuftiproVerification(reference: "17374217",country: "PK", 
 				      language: "EN", email: "example@gmail.com",
 				      callback_url: "your-callback_url",
                                       redirect_url: "your-redirect_url",
