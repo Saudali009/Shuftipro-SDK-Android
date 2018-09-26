@@ -212,7 +212,7 @@ All verification services are optional. You can provide Shufti Pro a single serv
 
 	Required: **No**
 	Type: **String**
-	Format: yyyy-mm-dd
+	Format: **yyyy-mm-dd**
 
 	Provide a valid date. Please note that the date should be before today. Example 1990-12-31
 
@@ -229,7 +229,7 @@ All verification services are optional. You can provide Shufti Pro a single serv
 
 	Required: **No**
 	Type: **String**
-	Format: yyyy-mm-dd
+	Format: **yyyy-mm-dd**
 
 	Provide a valid date. Please note that the date should be after today. Example 2025-12-31
 	
@@ -296,9 +296,11 @@ All verification services are optional. You can provide Shufti Pro a single serv
 	Type: **String**
 	Minimum: 2 characters
 	Maximum: 100 chracters
+	
 	Provide text in the string format which will be verified from a given proof.
 
 ## Response Logging
+
 Response of verification can be logged via the code given below. You can see this in LogCat at runtime. Write this code in Response listener of SDK:
 ```sh
 
