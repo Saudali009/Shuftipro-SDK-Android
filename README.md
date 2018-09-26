@@ -220,8 +220,8 @@ All verification services are optional. You can provide Shufti Pro a single serv
 
 	Required: **No**
 	Type: **String**
-	Minimum: 2 characters
-	Maximum: 100 chracters
+	Minimum: **2 characters**
+	Maximum: **100 chracters**
 
 	Allowed Characters are numbers, alphabets, dots, dashes, spaces, underscores and commas. Examples 35201-0000000-0, 	ABC1234XYZ098
 
@@ -237,7 +237,7 @@ All verification services are optional. You can provide Shufti Pro a single serv
 
 	Required: **No**
 	Type: **String**
-	Format: yyyy-mm-dd
+	Format: **yyyy-mm-dd**
 
 	Provide a valid date. Please note that the date should be after today. Example 2025-12-31
 
@@ -272,8 +272,8 @@ All verification services are optional. You can provide Shufti Pro a single serv
 * ## fullAddress
 	Required: **No**
 	Type: **String**
-	Minimum: 2 characters
-	Maximum: 250 chracters
+	Minimum: **2 characters**
+	Maximum: **250 chracters**
 
 	Allowed Characters are numbers, alphabets, dots, dashes, spaces, underscores, hashes and commas. Leave empty to perform data extraction from provided proofs.
 
@@ -294,8 +294,8 @@ All verification services are optional. You can provide Shufti Pro a single serv
 
 	Required: **Yes**
 	Type: **String**
-	Minimum: 2 characters
-	Maximum: 100 chracters
+	Minimum: **2 characters**
+	Maximum: **100 chracters**
 	
 	Provide text in the string format which will be verified from a given proof.
 
