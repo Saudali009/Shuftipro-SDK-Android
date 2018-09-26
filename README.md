@@ -210,41 +210,41 @@ All verification services are optional. You can provide Shufti Pro a single serv
 
 * ## dob
 
-	Required: **No**
-	Type: **String**
-	Format: **yyyy-mm-dd**
+	Required: **No**  
+	Type: **String**  
+	Format: **yyyy-mm-dd**  
 
 	Provide a valid date. Please note that the date should be before today. Example 1990-12-31
 
 * ## documentNumber
 
-	Required: **No**
-	Type: **String**
-	Minimum: **2 characters**
-	Maximum: **100 chracters**
-
+	Required: **No**  
+	Type: **String**  
+	Minimum: **2 characters**  
+	Maximum: **100 characters** 
+	
 	Allowed Characters are numbers, alphabets, dots, dashes, spaces, underscores and commas. Examples 35201-0000000-0, 	ABC1234XYZ098
 
 * ## expiryDate
 
-	Required: **No**
-	Type: **String**
-	Format: **yyyy-mm-dd**
+	Required: **No**  
+	Type: **String**  
+	Format: **yyyy-mm-dd**  
+
+	Provide a valid date. Please note that the date should be after today. Example 2025-12-31
+
+* ## issueDate
+
+	Required: **No**  
+	Type: **String**  
+	Format: **yyyy-mm-dd**  
 
 	Provide a valid date. Please note that the date should be after today. Example 2025-12-31
 	
-* ## issueDate
-
-	Required: **No**
-	Type: **String**
-	Format: **yyyy-mm-dd**
-
-	Provide a valid date. Please note that the date should be after today. Example 2025-12-31
-
 * ## isToPerformAddressVerification
 
-	Required: **No**
-	Type: **boolean**
+	Required: **No**  
+	Type: **boolean** 
 
 	Set value to true for address verification verification.
 
@@ -270,32 +270,33 @@ All verification services are optional. You can provide Shufti Pro a single serv
 	If you set it true user will be able to verify data using bank statements.
 	
 * ## fullAddress
-	Required: **No**
-	Type: **String**
-	Minimum: **2 characters**
-	Maximum: **250 chracters**
+
+	Required: **No**  
+	Type: **String**  
+	Minimum: **2 characters**  
+	Maximum: **250 characters** 
 
 	Allowed Characters are numbers, alphabets, dots, dashes, spaces, underscores, hashes and commas. Leave empty to perform data extraction from provided proofs.
 
 * ## name
-	Required: **No**
+	Required: **No**  
 	Type: **String**
 
 	Allowed Characters are numbers, alphabets, dots, dashes, spaces, underscores, hashes and commas. Leave empty to perform data extraction from provided proofs.
 	
 * ## isToPerformConsentVerification
 
-	Required: **No**
+	Required: **No**  
 	Type: **boolean**
-
+	
 	Set value to true for consent verification.
 	
 * ## textToBeVerified
 
-	Required: **Yes**
-	Type: **String**
-	Minimum: **2 characters**
-	Maximum: **100 chracters**
+	Required: **No**  
+	Type: **String**  
+	Minimum: **2 characters**  
+	Maximum: **100 characters** 
 	
 	Provide text in the string format which will be verified from a given proof.
 
