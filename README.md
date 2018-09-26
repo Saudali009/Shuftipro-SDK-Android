@@ -100,36 +100,203 @@ instance.shuftiproVerification(reference: "17374217",country: "PK",
 ```
 
 
-#### Request Parameters 
+# Request Parameters 
 
-| Parameter | Description |
-| ------ | ------ |
-| reference | This is the unique reference ID of request, which we will send you back with each response, so you can verify the request. Only alphanumeric values are allowed. This reference can be used to get status of already performed verification requests. |
-| language | Send the 2 characters long language code of your preferred language to display the verification screens accordingly. |
-| email | Your email address. Example: johndoe@example.com. |
-| country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
-| callback_url | Your callback url. Example: http://www.example.com. |
-| redirect_url | Your redirect url. Example: http://www.example.com. |
-| country | Full Country name or ISO2 Code. Example: United Kingdom or GB. |
-| isToMakeFaceVerification | Set value to true for face verification. |
-| isToPerformDocumentationVerification | Set value to true for documentation verification. |
-| isSupportPassportType | If you set it true user will be able to verify data using passport. |
-| isSupportIdCardType | If you set it true user will be able to verify data using Id card. |
-| isSupportDrivingLicenseType | If you set it true user will be able to verify data using driving lisence. |
-| isSupportCreditCardType | If you set it true user will be able to verify data using credit card. |
-| nameOnDocument | The name is required if you don't want to perform OCR of the name. Otherwise optional. |
-| dob | Provide a valid date. Please note that the date should be before today. Example 1990-12-31. |
-| documentNumber | Allowed Characters are numbers, alphabets, dots, dashes, spaces, underscores and commas. Examples 35201-0000000-0, ABC1234XYZ098 |
-| expiryDate | Provide a valid date. Please note that the date should be after today. Example 2025-12-31 |
-| issueDate | Provide a valid date. Please note that the date should be after today. Example 2025-12-31 |
-| isToPerformAddressVerification | Set value to true for address verification. |
-| isUtilityBillSupportedType | If you set it true user will be able to verify data using utility bills. |
-| isIdCardSupportedType | If you set it true user will be able to verify data using Id card. |
-| isBankStatementSupportedType | If you set it true user will be able to verify data using bank statements. |
-| fullAddress | Leave empty to perform data extraction from provided proofs. |
-| name | Leave empty to perform data extraction from provided proofs. |
-| isToPerformConsentVerification | Set value to true for consent verification. |
-| textToBeVerified | Provide text in the string format which will be verified from a given proof. |
+It is important to note here that each service module is independent of other and each one of them is activated according to the nature of request received from you. There are a total of four services which include face, document, address, consent.
+
+All verification services are optional. You can provide Shufti Pro a single service or mixture of several services for verifications. All keys are optional too. If a key is given in document or address sevice and no value is provided then OCR will be performed for those keys. 
+
+* ## reference
+
+	Required: **Yes**  
+	Type: **string**  
+	Minimum: **6 characters**  
+	Maximum: **250 characters**  
+
+	This is the unique reference ID of request, which we will send you back with each response, so you can verify the request. Only alphanumeric values are allowed. This reference can be used to get status of already performed verification requests.
+
+
+* ## country
+
+	Required: **Yes**  
+	Type: **string**  
+	Length: **2 characters**
+
+	Send the 2 characters long [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) country code of where your customer is from. Please consult [Supported Countries](countries.md) for country codes.
+
+* ## language
+
+	Required: **No**  
+	Type: **string**  
+	Length: **2 characters**
+
+	Send the 2 characters long language code of your preferred language to display the verification screens accordingly. Please consult [Supported Languages](languages.md) for language codes. Default language english will be selected if this key is missing in the request.
+
+* ## email
+
+	Required: **No**  
+	Type: **string**  
+	Minimum: **6 characters**  
+	Maximum: **128 characters**
+
+	This field represents email of the end-user. If it is missing in a request, than Shuftpro will ask the user for its email in an on-site request.
+
+* ## callback_url
+
+	Required: **Yes**  
+	Type: **string**  
+	Minimum: **6 characters**  
+	Maximum: **250 characters**
+
+	During a verification request, we make several server to server calls to keep you updated about the verification state. This way you can update the request status at your end even if the customer is lost midway through the process.
+
+* ## redirect_url
+
+	Required: **No**  
+	Type: **string**  
+	Minimum: **6 characters**  
+	Maximum: **250 characters**
+
+	Once an on-site verification is complete, User is redirected to this link after showing the results.
+	
+* ## isFaceVerification
+
+	Required: **No**  
+	Type: **boolean** 
+
+	Set value to true for face verification.
+	
+* ## isToPerformDocumentationVerification
+
+	Required: **No**  
+	Type: **boolean** 
+
+	Set value to true for documentation verification.	
+
+* ## isSupportPassportType
+
+	Required: **No**  
+	Type: **boolean** 
+
+	If you set it true user will be able to verify data using passport.	
+
+* ## isSupportIdCardType
+
+	Required: **No**  
+	Type: **boolean** 
+
+	If you set it true user will be able to verify data using Id card.
+
+* ## isSupportDrivingLicenseType
+
+	Required: **No**  
+	Type: **boolean** 
+
+	If you set it true user will be able to verify data using driving lisence.
+
+* ## isSupportCreditDebitCardType
+
+	Required: **No**  
+	Type: **boolean** 
+
+	If you set it true user will be able to verify data using credit/debit card.
+
+* ## nameOnDocument
+
+	Required: **No**  
+	Type: **String** 
+
+	The name is required if you don't want to perform OCR of the name. Otherwise optional.
+
+* ## dob
+
+	Required: **No**
+	Type: **String**
+	Format: yyyy-mm-dd
+
+	Provide a valid date. Please note that the date should be before today. Example 1990-12-31
+
+* ## documentNumber
+
+	Required: **No**
+	Type: **String**
+	Minimum: 2 characters
+	Maximum: 100 chracters
+
+	Allowed Characters are numbers, alphabets, dots, dashes, spaces, underscores and commas. Examples 35201-0000000-0, 	ABC1234XYZ098
+
+* ## expiryDate
+
+	Required: **No**
+	Type: **String**
+	Format: yyyy-mm-dd
+
+	Provide a valid date. Please note that the date should be after today. Example 2025-12-31
+	
+* ## issueDate
+
+	Required: **No**
+	Type: **String**
+	Format: yyyy-mm-dd
+
+	Provide a valid date. Please note that the date should be after today. Example 2025-12-31
+
+* ## isToPerformAddressVerification
+
+	Required: **No**
+	Type: **boolean**
+
+	Set value to true for address verification verification.
+
+* ## isUtilityBillSupportedType
+
+	Required: **No**  
+	Type: **boolean** 
+
+	If you set it true user will be able to verify data using utility bills.
+
+* ## isIdCardSupportedType
+
+	Required: **No**  
+	Type: **boolean** 
+
+	If you set it true user will be able to verify data using Id card.
+
+* ## isBankStatementSupportedType
+
+	Required: **No**  
+	Type: **boolean** 
+
+	If you set it true user will be able to verify data using bank statements.
+	
+* ## fullAddress
+	Required: **No**
+	Type: **String**
+	Minimum: 2 characters
+	Maximum: 250 chracters
+
+	Allowed Characters are numbers, alphabets, dots, dashes, spaces, underscores, hashes and commas. Leave empty to perform data extraction from provided proofs.
+
+* ## name
+	Required: **No**
+	Type: **String**
+
+	Allowed Characters are numbers, alphabets, dots, dashes, spaces, underscores, hashes and commas. Leave empty to perform data extraction from provided proofs.
+	
+* ## isToPerformConsentVerification
+
+	Required: **No**
+	Type: **boolean**
+
+	Set value to true for consent verification.
+	
+* ## textToBeVerified
+
+	Required: **Yes**
+	Type: **String**
+	Minimum: 2 characters
+	Maximum: 100 chracters
+	Provide text in the string format which will be verified from a given proof.
 
 ## Response Logging
 Response of verification can be logged via the code given below. You can see this in LogCat at runtime. Write this code in Response listener of SDK:
